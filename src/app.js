@@ -126,12 +126,13 @@ return createItem;
     lightBox.classList.remove('is-open');
     //  lightBoxImg.src = "";
      console.log(lightBoxImg);
-  }
+  };
 
    function onEscKeyDown (evt){
      console.log(evt);
      
      if(evt.code === 'Escape') {
-      lightBox.classList.remove('is-open');
+      // lightBox.classList.remove('is-open');
+      onCloseModal();
      }
-   }
+   };

@@ -64,6 +64,7 @@ const galleryItems = [
     },
   ];
 
+  
   const galleryContainer = document.querySelector(".js-gallery")
   console.log(galleryContainer);
 
@@ -103,6 +104,7 @@ return createItem;
   //  открытие модального окна
    function onOpenModal (event){
      event.preventDefault();
+     window.addEventListener('keydown',onEscKeyDown );
      const galeryImage = event.target;
      if(galeryImage.nodeName !== 'IMG'){
        return;
@@ -117,8 +119,19 @@ return createItem;
 
    };
 
-   lightBoxBtn.addEventListener('click', evt =>{
-     lightBox.classList.remove('is-open');
-     lightBoxImg.src = "";
+   lightBoxBtn.addEventListener('click',onCloseModal,);
+
+  function onCloseModal(event){
+    window.removeEventListener('keydown',onEscKeyDown );
+    lightBox.classList.remove('is-open');
+    //  lightBoxImg.src = "";
      console.log(lightBoxImg);
-   });
+  }
+
+   function onEscKeyDown (evt){
+     console.log(evt);
+     
+     if(evt.code === 'Escape') {
+      lightBox.classList.remove('is-open');
+     }
+   }
